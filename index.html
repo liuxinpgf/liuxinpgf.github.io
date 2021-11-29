@@ -128,7 +128,6 @@
     </script>
 </head>
 <body>
-
 <div class="loan_jm1">
     <ul>
         <li class="loan_jm_l1">
@@ -136,11 +135,10 @@
 <!--            <span class="wbk_srn select_show select_gr" id="gr_zone_ids" data-id="130100"></span><b></b>-->
         </li>
     </ul>
-    <p id="gr_zone_ids"></p>
+    <div id="gr_zone_ids"></div>
 </div>
 
 <div class="IGN_CITY_CONTAINER" style="z-index: 9999;">
-
     <div class="city"></div>
 
 <!--    <div class="IGN_CITY_LETTER"><ul></ul></div>-->
@@ -151,6 +149,7 @@
 
     $(document).ready(function(){
         $('.IGN_CITY_CONTAINER').show();
+        showCity('B');
     });
 
     function showCity(letter){
@@ -194,7 +193,13 @@
     $('body').on('click', '.city-list p', function () {
         var type = $('.IGN_CITY_CONTAINER').data('type');
         $('#zone_ids').html($(this).html()).attr('data-id', $(this).attr('data-id'));
-        $('#gr_zone_ids').text( $(this).attr('data-id'));
+        var content = $(this).attr('data-id');
+        $('#gr_zone_ids').text(content);
+        if(content == '小任果业'){
+            $('#gr_zone_ids').html('<span>'+content+'</span><a href="https://mp.weixin.qq.com/s/JbwFm0Ur9Y-M2-rB4S7hJA"> 点击跳转详细地址 </a>');
+        }else if(content == '水果课代表'){
+            $('#gr_zone_ids').html('<span>'+content+'</span><a href="https://thumbnail1.baidupcs.com/thumbnail/2d650c9e7qd98aa303595be37ed2e04c?fid=3611495858-250528-1078044122823897&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-ZjNlUEqDrg519V2MVA55u7G9wsQ%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8875030796384550171&dp-callid=0&time=1638194400&size=c1440_u900&quality=90&vuk=3611495858&ft=image&autopolicy=1"> 点击查看悠悠果业详细地址 </a><a href="https://thumbnail1.baidupcs.com/thumbnail/ac5d8092eg5940beadaef901ebd9e48d?fid=3611495858-250528-755144520988367&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-8uvda5lDd6GMJNz%2fRUXLr5CRL2s%3d&expires=8h&chkbd=0&chkv=0&dp-logid=8875030796384550171&dp-callid=0&time=1638194400&size=c1440_u900&quality=90&vuk=3611495858&ft=image&autopolicy=1"> 点击查询水果课代表详细地址 </a>');
+        }
         $('.IGN_CITY_CONTAINER').hide();
     });
 
